@@ -41,7 +41,7 @@ class Item:
             )
         #print(items)
         #for instance in instances:
-            #item.
+            #items
         
 #this is the same as creating an instance of a class
 
