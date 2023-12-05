@@ -1,6 +1,9 @@
+import csv
+
 #Instance and object are referred to as the same thing
 '''Hard coding instances objects'''
 class Item:
+    all = []
     pay_rate = 0.8 # The pay rate after a 20% discount
 
     def __init__(self, name: str, price: float, quantity: int = 0):
@@ -11,6 +14,11 @@ class Item:
         self.name = name
         self.price = price
         self.quantity = quantity
+    
+        Item.all.append(self)
+    
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -19,20 +27,32 @@ class Item:
         self.price = self.price * self.pay_rate
         return self
 
+    @classmethod
+    def instantiate_instance(cls):
+        with open('data.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            items = list(reader)
+        
+        for item in items:
+            Item(
+                name = item.get('name'),
+                price = float(item.get('price')),
+                quantity = int(item.get('quantity'))
+            )
+        #print(items)
+        #for instance in instances:
+            #item.
+        
 #this is the same as creating an instance of a class
-item1 = Item("Phone", 100, 5)
 
-
-
+Item.instantiate_instance()
 '''
-#creating another instance
-item2 = Item()
-item2.name = "laptop"
-item2.price = 1000
-item2.quanity = 3
+item1 = Item("Phone", 100, 1)
+item2 = Item("Laptop", 1000, 3)
+item3 = Item("Cable", 10, 5)
+item4 = Item("Mouse", 50, 5)
+item5 = Item("Keyboard", 75, 5)
 '''
-print(item1.name)
-print(item1.calculate_total_price())
-print(item1.price)
-print(item1.apply_discount().calculate_total_price())
-print(item1.price)
+print(Item.all)
+
+
