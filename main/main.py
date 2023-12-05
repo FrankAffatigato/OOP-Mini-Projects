@@ -53,6 +53,3 @@ item3 = Item("Cable", 10, 5)
 item4 = Item("Mouse", 50, 5)
 item5 = Item("Keyboard", 75, 5)
 '''
-print(Item.all)
-print("macpush2")
-
