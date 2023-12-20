@@ -6,7 +6,12 @@ class Item:
     all = []
     pay_rate = 0.8 # The pay rate after a 20% discount
 
-    def __init__(self, name: str, price: float, quantity: int = 0):
+    def __init__(
+            self, 
+            name: str, 
+            price: float, 
+            quantity: int = 0
+            ):
         # Run validations to the received arguments
         assert price >= 0, f"Price {price} is not greater or equal to zero"
         assert quantity >= 0, f"Price {quantity} is not greater or equal to zero"
@@ -16,7 +21,7 @@ class Item:
         self.quantity = quantity
     
         Item.all.append(self)
-    
+        
     def __repr__(self):
         return f"Item('{self.name}', {self.price}, {self.quantity})"
 
@@ -39,13 +44,23 @@ class Item:
                 price = float(item.get('price')),
                 quantity = int(item.get('quantity'))
             )
-        #print(items)
-        #for instance in instances:
-            #items
+    
+    @staticmethod
+    def is_integer(num):
+        if isinstance(num, float):
+            return num.is_integer()
+        elif isinstance(num, int):
+            return True
+        else:
+            return False
+
+print(Item.is_integer(7.0))
+
+
+
         
 #this is the same as creating an instance of a class
 
-Item.instantiate_instance()
 '''
 item1 = Item("Phone", 100, 1)
 item2 = Item("Laptop", 1000, 3)
