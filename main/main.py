@@ -55,7 +55,7 @@ class Item:
             return False
 
 print(Item.is_integer(7.0))
-print("test1")
+print("test2")
 
 
 
