@@ -16,17 +16,26 @@ class Item:
         assert price >= 0, f"Price {price} is not greater or equal to zero"
         assert quantity >= 0, f"Price {quantity} is not greater or equal to zero"
 
-        self.__name = name
+        self._name = name
         self.price = price
         self.quantity = quantity
     
         Item.all.append(self)
-    '''
+
     @property
     # Property Decorator = Read-Only Attribute
     def name(self):
-        return self.__name
+        return self._name
+    
     '''
+    @name.setter
+    def name(self, value):
+        if len(value) > 15:
+            raise Exception("Length of name is too long, must be 15 characters or less")
+        else:
+            self.__name = value
+    '''
+
 
 
 
