@@ -11,6 +11,6 @@ class Phone(Item):
         self.broken_phones = broken_phones
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.broken_phones})"
+        return super().__repr__() + f", broken_phones={self.broken_phones})"
 
         
